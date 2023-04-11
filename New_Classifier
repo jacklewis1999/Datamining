@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
 # Load the dataset
-df = pd.read_csv("https://raw.githubusercontent.com/andvise/DataAnalyticsDatasets/8e8f6475f49d2a587e4f5c76cdf0b011b22c6ac1/dataset_5000_reviews.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/andvise/DataAnalyticsDatasets/main/test_dataset.csv")
 
 # Separate the features (X) from the labels (y)
 # Replace infinity values with 0
@@ -13,6 +13,9 @@ df = df.replace([np.inf, -np.inf], 0)
 
 # Fill NaN values with 0
 df = df.fillna(0)
+
+X = df.iloc[:, :-1] # Separating the features (X) from the labels (y)
+y = df['target']
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
